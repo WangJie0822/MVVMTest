@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+
+        applicationId "cn.wj.android.mvvm_test"
+
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        flavorDimensions "versionCode"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips", "arm64-v8a"
+        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            lintOptions {
+                disable 'MissingTranslation'
+                checkReleaseBuilds false
+                abortOnError false
+            }
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            lintOptions {
+                disable 'MissingTranslation'
+                checkReleaseBuilds false
+                abortOnError false
+            }
+        }
+    }
+
+    sourceSets {
+        main { //           Java             Kotlin
+            java.srcDirs = ['src/main/java', 'src/main/kotlin']
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileOptions { // JDK版本
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding { // DataBinding 开启
+        enabled true
+    }
+}
+
+dependencies {
+    // 测试
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
+    // libs
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    /* Kotlin 支持 */
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    /* v4 支持 */
+    implementation "com.android.support:support-v4:${rootProject.ext.android.support_lib_version}"
+    /* v7 支持*/
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.android.support_lib_version}"
+    /* RecyclerView */
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.android.support_lib_version}"
+    /* CardView */
+    implementation "com.android.support:cardview-v7:${rootProject.ext.android.support_lib_version}"
+    /* Design 支持 */
+    implementation "com.android.support:design:${rootProject.ext.android.support_lib_version}"
+    /* 约束性布局 */
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    /* Android Architecture Components 扩展 */
+    implementation "android.arch.lifecycle:extensions:1.1.0"
+
+    /* Dagger 2 */
+    implementation 'com.google.dagger:dagger:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+    kapt 'com.google.dagger:dagger-android-processor:2.16'
+    compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+
+    /* OkHttp + Retrofit */
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    /* RxJava2 + RxAndroid + RxKotlin */
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+
+    /* Glide */
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    kapt 'com.github.bumptech.glide:compiler:4.7.1'
+}

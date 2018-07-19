@@ -1,0 +1,16 @@
+ext {
+    android = [
+            // 编译 SDK 版本
+            compileSdkVersion  : 27,
+            // 最小支持版本
+            minSdkVersion      : 19,
+            // 目标支持版本
+            targetSdkVersion   : 23,
+            // 应用版本号
+            versionCode        : 1,
+            // 应用版本名
+            versionName        : "1.0.0",
+            // 支持库版本号
+            support_lib_version: "27.1.1"
+    ]
+}
