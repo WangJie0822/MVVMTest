@@ -1,0 +1,4 @@
+<resources>
+    <string name="dodge_snackbar_top_behavior">cn.wj.android.common.widget.topsnackbar.DodgeTopSnackbarBehavior</string>
+    <string name="dodge_snackbar_bottom_behavior">cn.wj.android.common.widget.topsnackbar.DodgeBottomSnackbarBehavior</string>
+</resources>
