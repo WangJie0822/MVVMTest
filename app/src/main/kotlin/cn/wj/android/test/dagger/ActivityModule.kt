@@ -1,6 +1,6 @@
 package cn.wj.android.test.dagger
 
-import cn.wj.android.test.MainActivity
+import cn.wj.android.test.activity.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -11,5 +11,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeMainActivity(): MainActivity
+    abstract fun contributeMainActivity(): SplashActivity
 }
